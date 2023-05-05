@@ -1,0 +1,60 @@
+<view class="container">
+  <loading hidden="{{loadingHide}}">
+    {{loadingText}}
+  </loading>
+  <view class="title">编辑订单条目</view>
+
+  <view class="orderItem_modify_view">
+    <form bindsubmit="formSubmit">
+       <view class="formItem">
+        <view class="label">条目id：</view>
+        <view class="formControl">
+          <input type="text" name="orderItem.itemId" disabled="true" value="{{itemId}}" />
+        </view>
+      </view>
+      <view class="formItem">
+        <view class="label">所属订单：</view>
+        <view class="formControl">
+          <picker bindchange="bind_orderObj_change" value="{{orderObj_Index}}" range-key="orderNo" range="{{orderInfos}}">
+            <view style="display:flex;border:1px solid green;">
+              <input hidden="true" name="orderItem.orderObj.orderNo" value="{{orderInfos[orderObj_Index].orderNo}}" />
+              <input style="width:90%;border:0px;" value="{{orderInfos[orderObj_Index].orderNo}}"></input>
+              <image class="arrow-r" src="/images/arrow-r-0.png"></image>
+            </view>
+          </picker> 
+        </view>
+      </view>
+
+      <view class="formItem">
+        <view class="label">订单商品：</view>
+        <view class="formControl">
+          <picker bindchange="bind_productObj_change" value="{{productObj_Index}}" range-key="productName" range="{{products}}">
+            <view style="display:flex;border:1px solid green;">
+              <input hidden="true" name="orderItem.productObj.productId" value="{{products[productObj_Index].productId}}" />
+              <input style="width:90%;border:0px;" value="{{products[productObj_Index].productName}}"></input>
+              <image class="arrow-r" src="/images/arrow-r-0.png"></image>
+            </view>
+          </picker> 
+        </view>
+      </view>
+
+      <view class="formItem">
+        <view class="label">商品单价：</view>
+        <view class="formControl">
+          <input type="text" name="orderItem.price" placeholder="请输入商品单价" value="{{price}}" />
+        </view>
+      </view>
+
+      <view class="formItem">
+        <view class="label">购买数量：</view>
+        <view class="formControl">
+          <input type="text" name="orderItem.orderNumer" placeholder="请输入购买数量" value="{{orderNumer}}" />
+        </view>
+      </view>
+
+      <view>
+        <button class="vBtn_ok" formType="submit" disabled="{{disabled}}">提交修改</button>
+      </view>
+    </form>
+  </view>
+</view>

@@ -1,0 +1,80 @@
+<view class="container">
+  <view class="toggleQview" bindtap="toggleQueryViewHide" style="padding:5px;">显示或隐藏查询视图</view>
+  <view class="queryView" hidden="{{queryViewHidden}}">
+    <view class="queryParams">
+      <view class="queryItem">
+        <view class="label">商品类别：</view>
+        <view class="searchControl">
+          <picker bindchange="bind_productClassObj_change" value="{{productClassObj_Index}}" range-key="className" range="{{productClasss}}">
+            <view class="value" name="types">
+              <input style="width:75%;display:inline-block;float:left;" value="{{productClasss[productClassObj_Index].className}}"></input>
+              <image class="arrow-r" src="/images/arrow-r-0.png"></image>
+            </view>
+          </picker> 
+        </view>
+      </view>
+
+      <view class="queryItem">
+        <view class="label">商品名称：</view>
+        <view class="searchControl"><input data-id="productName" placeholder="请输入商品名称关键字" value="{{productName}}" bindinput="searchValueInput" /></view>
+      </view>
+
+      <view class="queryItem">
+        <view class="label">是否推荐：</view>
+        <view class="searchControl"><input data-id="recommendFlag" placeholder="请输入是否推荐关键字" value="{{recommendFlag}}" bindinput="searchValueInput" /></view>
+      </view>
+
+      <view class="queryItem">
+        <view class="label">上架时间：</view>
+         <view class="searchControl">
+          <picker mode="date" value="{{addTime}}" start="1970-01-01" end="2030-01-01" bindchange="bind_addTime_change" >
+            <view>
+              <input style="width:75%;display:inline-block;float:left;" placeholder="选择上架时间" value="{{addTime}}"></input>
+              <text class="clearButton" catchtap="clear_addTime">x</text>
+            </view>
+          </picker> 
+        </view>
+      </view>
+
+    </view>
+
+    <view class="queryButton">
+       <button class="font_12 fl_r op-btn mr_10" bindtap="queryProduct">查询</button>
+    </view>
+  </view>
+
+  <view class="productList">
+  <block wx:for-items="{{products}}" wx:key="{{index}}">
+    <view class="productItem">
+        <view class="productImg">
+          <image src="{{item.mainPhotoUrl}}"></image>
+        </view>
+        <navigator url="product_detail?productId={{item.productId}}" hover-class="navigator-hover">
+        <view class="productText">
+          <view>商品类别：{{item.productClassObj.className}}</view>
+          <view>商品名称：{{item.productName}}</view>
+          <view>商品价格：{{item.price}}</view>
+          <view>商量数量：{{item.productCount}}</view>
+          <view>人气值：{{item.hotNum}}</view>
+          <view>上架时间：{{item.addTime}}</view>
+        </view>
+        </navigator>
+    </view>
+    <view class="opt_view" style="display:none;">
+      <button class="font_12 fl_r del-btn mr_10" bindtap="removeProduct" data-productid="{{item.productId}}">删除</button> 
+      <navigator url="product_modify?productId={{item.productId}}" hover-class="navigator-hover">
+        <button class="font_12 fl_r op-btn mr_10">编辑</button>
+      </navigator>
+    </view>
+  </block>
+  </view>
+
+  <view hidden="{{loading_hide}}" class="loading">
+    <view class="loadingImg"><image src="/images/loading.gif" mode="aspectFill"></image></view>
+    <view class="loadingTxt">..加载中..</view>
+  </view>
+  <view class="nodata_view" hidden="{{nodata_hide}}">
+    <image src="/images/Noline.png" mode="widthFix"></image>
+  </view>
+</view>
+

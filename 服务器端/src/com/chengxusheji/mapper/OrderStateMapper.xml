@@ -1,0 +1,48 @@
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--namespace命名空间，为了对sql语句进行隔离，方便管理，mapper开发dao方式，使用namespace有特殊作用  
+mapper代理开发时将namespace指定为mapper接口的全限定名  
+ -->
+<mapper namespace="com.chengxusheji.mapper.OrderStateMapper"> 
+<!--在mapper.xml文件中配置很多的sql语句，执行每个sql语句时，封装为MappedStatement对象 
+mapper.xml以statement为单位管理sql语句  
+ -->
+	<!-- 添加订单状态记录 -->
+	<insert id="addOrderState" parameterType="orderState">
+		insert into t_orderState(stateName) values 
+		(#{stateName})
+	</insert>
+
+	<!-- 按照查询条件分页查询订单状态记录 -->
+	<select id="queryOrderState" resultMap="orderStateMap" >
+		select t_orderState.* from t_orderState ${where} limit #{startIndex},#{pageSize}
+	</select>
+	<resultMap id="orderStateMap" type="orderState">
+        <id property="stateId" column="stateId" />
+    </resultMap>
+
+    <!-- 按照查询条件查询所有订单状态记录 -->
+	<select id="queryOrderStateList" resultMap="orderStateMap" >
+		select t_orderState.* from t_orderState ${where}
+	</select>
+
+    <!-- 按照查询条件的订单状态记录数 -->
+	<select id="queryOrderStateCount" resultType="int">
+		select count(*) from t_orderState ${where}
+	</select>
+
+	<!-- 根据主键查询某个订单状态记录 -->
+	<select id="getOrderState" parameterType="int" resultMap="orderStateMap">
+		select * from t_orderState where t_orderState.stateId = #{stateId}
+	</select>
+
+	<!-- 更新订单状态记录 -->
+	<update id="updateOrderState" parameterType="orderState">
+		update t_orderState set stateName=#{stateName} where stateId = #{stateId}
+	</update>
+
+	<!-- 删除订单状态记录 -->
+	<delete id="deleteOrderState" parameterType="int">
+		delete from t_orderState where stateId=#{stateId}
+	</delete>
+
+</mapper>

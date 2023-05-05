@@ -1,0 +1,34 @@
+<view class="container">
+  <loading hidden="{{loadingHide}}">
+    {{loadingText}}
+  </loading>
+
+  <view class="title">商品类别详情</view>
+  <view class="productClass_detail_view"> 
+      <view class="viewItem">
+        <view class="label">类别id：</view>
+        <view class="content">
+          <view>{{classId}}</view>
+        </view>
+      </view>
+
+       <view class="viewItem">
+        <view class="label">类别名称：</view>
+        <view class="content"> 
+          <view>{{className}}</view>
+        </view>
+      </view>
+
+       <view class="viewItem">
+        <view class="label">类别描述：</view>
+        <view class="content"> 
+          <view>{{classDesc}}</view>
+        </view>
+      </view>
+
+      <view>
+        <navigator class="btnReturn" open-type="navigateBack" hover-class="navigator-hover">返回</navigator>
+      </view>
+
+  </view>
+</view>

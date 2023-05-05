@@ -1,0 +1,48 @@
+<view class="container">
+  <loading hidden="{{loadingHide}}">
+    {{loadingText}}
+  </loading>
+
+  <view class="title">订单条目详情</view>
+  <view class="orderItem_detail_view"> 
+      <view class="viewItem">
+        <view class="label">条目id：</view>
+        <view class="content">
+          <view>{{itemId}}</view>
+        </view>
+      </view>
+
+       <view class="viewItem">
+        <view class="label">所属订单：</view>
+        <view class="content"> 
+          <view>{{orderObj}}</view>
+        </view>
+      </view>
+
+       <view class="viewItem">
+        <view class="label">订单商品：</view>
+        <view class="content"> 
+          <view>{{productObj}}</view>
+        </view>
+      </view>
+
+       <view class="viewItem">
+        <view class="label">商品单价：</view>
+        <view class="content"> 
+          <view>{{price}}</view>
+        </view>
+      </view>
+
+       <view class="viewItem">
+        <view class="label">购买数量：</view>
+        <view class="content"> 
+          <view>{{orderNumer}}</view>
+        </view>
+      </view>
+
+      <view>
+        <navigator class="btnReturn" open-type="navigateBack" hover-class="navigator-hover">返回</navigator>
+      </view>
+
+  </view>
+</view>

@@ -1,0 +1,56 @@
+<view class="container">
+  <view class="toggleQview" bindtap="toggleQueryViewHide" style="padding:5px;">显示或隐藏查询视图</view>
+  <view class="queryView" hidden="{{queryViewHidden}}">
+    <view class="queryParams">
+      <view class="queryItem">
+        <view class="label">标题：</view>
+        <view class="searchControl"><input data-id="title" placeholder="请输入标题关键字" value="{{title}}" bindinput="searchValueInput" /></view>
+      </view>
+
+      <view class="queryItem">
+        <view class="label">发布时间：</view>
+         <view class="searchControl">
+          <picker mode="date" value="{{publishDate}}" start="1970-01-01" end="2030-01-01" bindchange="bind_publishDate_change" >
+            <view>
+              <input style="width:75%;display:inline-block;float:left;" placeholder="选择发布时间" value="{{publishDate}}"></input>
+              <text class="clearButton" catchtap="clear_publishDate">x</text>
+            </view>
+          </picker> 
+        </view>
+      </view>
+
+    </view>
+
+    <view class="queryButton">
+       <button class="font_12 fl_r op-btn mr_10" bindtap="queryNotice">查询</button>
+    </view>
+  </view>
+
+  <view class="noticeList">
+  <block wx:for-items="{{notices}}" wx:key="{{index}}">
+    <view class="noticeItem">
+        <navigator url="notice_detail?noticeId={{item.noticeId}}" hover-class="navigator-hover">
+        <view class="noticeText">
+          <view>标题：{{item.title}}</view>
+          <view>发布时间：{{item.publishDate}}</view>
+        </view>
+        </navigator>
+    </view>
+    <view class="opt_view" style="display:none;">
+      <button class="font_12 fl_r del-btn mr_10" bindtap="removeNotice" data-noticeid="{{item.noticeId}}">删除</button> 
+      <navigator url="notice_modify?noticeId={{item.noticeId}}" hover-class="navigator-hover">
+        <button class="font_12 fl_r op-btn mr_10">编辑</button>
+      </navigator>
+    </view>
+  </block>
+  </view>
+
+  <view hidden="{{loading_hide}}" class="loading">
+    <view class="loadingImg"><image src="/images/loading.gif" mode="aspectFill"></image></view>
+    <view class="loadingTxt">..加载中..</view>
+  </view>
+  <view class="nodata_view" hidden="{{nodata_hide}}">
+    <image src="/images/Noline.png" mode="widthFix"></image>
+  </view>
+</view>
+

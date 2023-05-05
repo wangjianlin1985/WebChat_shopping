@@ -1,0 +1,65 @@
+<view class="container">
+  <view class="toggleQview" bindtap="toggleQueryViewHide" style="padding:5px;display:none;">显示或隐藏查询视图</view>
+  <view class="queryView" hidden="{{queryViewHidden}}">
+    <view class="queryParams">
+      <view class="queryItem">
+        <view class="label">所属订单：</view>
+        <view class="searchControl">
+          <picker bindchange="bind_orderObj_change" value="{{orderObj_Index}}" range-key="orderNo" range="{{orderInfos}}">
+            <view class="value" name="types">
+              <input style="width:75%;display:inline-block;float:left;" value="{{orderInfos[orderObj_Index].orderNo}}"></input>
+              <image class="arrow-r" src="/images/arrow-r-0.png"></image>
+            </view>
+          </picker> 
+        </view>
+      </view>
+
+      <view class="queryItem">
+        <view class="label">订单商品：</view>
+        <view class="searchControl">
+          <picker bindchange="bind_productObj_change" value="{{productObj_Index}}" range-key="productName" range="{{products}}">
+            <view class="value" name="types">
+              <input style="width:75%;display:inline-block;float:left;" value="{{products[productObj_Index].productName}}"></input>
+              <image class="arrow-r" src="/images/arrow-r-0.png"></image>
+            </view>
+          </picker> 
+        </view>
+      </view>
+
+    </view>
+
+    <view class="queryButton">
+       <button class="font_12 fl_r op-btn mr_10" bindtap="queryOrderItem">查询</button>
+    </view>
+  </view>
+
+  <view class="orderItemList">
+  <block wx:for-items="{{orderItems}}" wx:key="{{index}}">
+    <view class="orderItemItem">
+        <navigator url="../product/product_detail?productId={{item.productObj.productId}}" hover-class="navigator-hover">
+        <view class="orderItemText">
+   
+          <view>订单商品：{{item.productObj.productName}}</view>
+          <view>商品单价：{{item.price}}</view>
+          <view>购买数量：{{item.orderNumer}}</view>
+        </view>
+        </navigator>
+    </view>
+    <view class="opt_view" >
+      <button class="font_12 fl_r del-btn mr_10" bindtap="removeOrderItem" data-itemid="{{item.itemId}}" style="display:none;">删除</button> 
+      <navigator url="../evaluate/evaluate_user_add?itemId={{item.itemId}}&productId={{item.productObj.productId}}&productName={{item.productObj.productName}}" hover-class="navigator-hover">
+        <button class="font_12 fl_r op-btn mr_10">评价</button>
+      </navigator>
+    </view>
+  </block>
+  </view>
+
+  <view hidden="{{loading_hide}}" class="loading">
+    <view class="loadingImg"><image src="/images/loading.gif" mode="aspectFill"></image></view>
+    <view class="loadingTxt">..加载中..</view>
+  </view>
+  <view class="nodata_view" hidden="{{nodata_hide}}">
+    <image src="/images/Noline.png" mode="widthFix"></image>
+  </view>
+</view>
+

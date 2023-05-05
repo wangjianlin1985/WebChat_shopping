@@ -1,0 +1,41 @@
+<view class="container">
+  <loading hidden="{{loadingHide}}">
+    {{loadingText}}
+  </loading>
+  <view class="title">添加新闻公告</view>
+
+  <view class="notice_add_view">
+    <form bindsubmit="formSubmit">
+      <view class="formItem">
+        <view class="label">标题：</view>
+        <view class="formControl">
+          <input type="text" name="notice.title" placeholder="请输入标题" value="{{title}}" />
+        </view>
+      </view>
+
+      <view class="formItem" style="align-items:flex-start;">
+        <view class="label">公告内容：</view>
+        <view class="formControl">
+           <textarea placeholder="请输入公告内容" maxlength="800" name="notice.content" value="{{content}}" />
+        </view>
+      </view>
+
+       <view class="formItem">
+        <view class="label">发布时间：</view>
+        <view class="formControl">
+          <picker mode="date"  start="1970-01-01" end="2030-01-01" value="{{publishDate}}" bindchange="bind_publishDate_change" >
+            <view style="display:flex;border:1px solid green;">
+              <input style="width:90%;border:0px;" name="notice.publishDate" placeholder="选择发布时间"  value="{{publishDate}}"></input>
+              <text class="clearButton" catchtap="clear_publishDate">x</text>
+            </view>
+          </picker>
+        </view>
+      </view>
+
+      <view>
+        <button class="vBtn_ok" formType="submit" disabled="{{disabled}}">提交发布</button>
+      </view>
+
+    </form>
+  </view>
+</view>

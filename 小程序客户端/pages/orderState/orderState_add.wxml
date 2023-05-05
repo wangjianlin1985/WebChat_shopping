@@ -1,0 +1,22 @@
+<view class="container">
+  <loading hidden="{{loadingHide}}">
+    {{loadingText}}
+  </loading>
+  <view class="title">添加订单状态</view>
+
+  <view class="orderState_add_view">
+    <form bindsubmit="formSubmit">
+      <view class="formItem">
+        <view class="label">订单状态名称：</view>
+        <view class="formControl">
+          <input type="text" name="orderState.stateName" placeholder="请输入订单状态名称" value="{{stateName}}" />
+        </view>
+      </view>
+
+      <view>
+        <button class="vBtn_ok" formType="submit" disabled="{{disabled}}">提交发布</button>
+      </view>
+
+    </form>
+  </view>
+</view>

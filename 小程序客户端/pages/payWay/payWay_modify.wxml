@@ -1,0 +1,27 @@
+<view class="container">
+  <loading hidden="{{loadingHide}}">
+    {{loadingText}}
+  </loading>
+  <view class="title">编辑支付方式</view>
+
+  <view class="payWay_modify_view">
+    <form bindsubmit="formSubmit">
+       <view class="formItem">
+        <view class="label">支付方式id：</view>
+        <view class="formControl">
+          <input type="text" name="payWay.payWayId" disabled="true" value="{{payWayId}}" />
+        </view>
+      </view>
+      <view class="formItem">
+        <view class="label">支付方式名称：</view>
+        <view class="formControl">
+          <input type="text" name="payWay.payWayName" placeholder="请输入支付方式名称" value="{{payWayName}}" />
+        </view>
+      </view>
+
+      <view>
+        <button class="vBtn_ok" formType="submit" disabled="{{disabled}}">提交修改</button>
+      </view>
+    </form>
+  </view>
+</view>

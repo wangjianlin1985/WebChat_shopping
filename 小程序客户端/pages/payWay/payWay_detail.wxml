@@ -1,0 +1,27 @@
+<view class="container">
+  <loading hidden="{{loadingHide}}">
+    {{loadingText}}
+  </loading>
+
+  <view class="title">支付方式详情</view>
+  <view class="payWay_detail_view"> 
+      <view class="viewItem">
+        <view class="label">支付方式id：</view>
+        <view class="content">
+          <view>{{payWayId}}</view>
+        </view>
+      </view>
+
+       <view class="viewItem">
+        <view class="label">支付方式名称：</view>
+        <view class="content"> 
+          <view>{{payWayName}}</view>
+        </view>
+      </view>
+
+      <view>
+        <navigator class="btnReturn" open-type="navigateBack" hover-class="navigator-hover">返回</navigator>
+      </view>
+
+  </view>
+</view>

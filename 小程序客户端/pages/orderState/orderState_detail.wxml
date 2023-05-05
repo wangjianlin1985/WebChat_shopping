@@ -1,0 +1,27 @@
+<view class="container">
+  <loading hidden="{{loadingHide}}">
+    {{loadingText}}
+  </loading>
+
+  <view class="title">订单状态详情</view>
+  <view class="orderState_detail_view"> 
+      <view class="viewItem">
+        <view class="label">状态编号：</view>
+        <view class="content">
+          <view>{{stateId}}</view>
+        </view>
+      </view>
+
+       <view class="viewItem">
+        <view class="label">订单状态名称：</view>
+        <view class="content"> 
+          <view>{{stateName}}</view>
+        </view>
+      </view>
+
+      <view>
+        <navigator class="btnReturn" open-type="navigateBack" hover-class="navigator-hover">返回</navigator>
+      </view>
+
+  </view>
+</view>

@@ -1,0 +1,50 @@
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--namespace命名空间，为了对sql语句进行隔离，方便管理，mapper开发dao方式，使用namespace有特殊作用  
+mapper代理开发时将namespace指定为mapper接口的全限定名  
+ -->
+<mapper namespace="com.chengxusheji.mapper.EvaluateMapper"> 
+<!--在mapper.xml文件中配置很多的sql语句，执行每个sql语句时，封装为MappedStatement对象 
+mapper.xml以statement为单位管理sql语句  
+ -->
+	<!-- 添加商品评价记录 -->
+	<insert id="addEvaluate" parameterType="evaluate">
+		insert into t_evaluate(productObj,userObj,content,evaluateTime) values 
+		(#{productObj.productId},#{userObj.user_name},#{content},#{evaluateTime})
+	</insert>
+
+	<!-- 按照查询条件分页查询商品评价记录 -->
+	<select id="queryEvaluate" resultMap="evaluateMap" >
+		select t_evaluate.* from t_evaluate,t_product,t_userInfo ${where} and t_evaluate.productObj = t_product.productId and t_evaluate.userObj = t_userInfo.user_name limit #{startIndex},#{pageSize}
+	</select>
+	<resultMap id="evaluateMap" type="evaluate">
+        <id property="evaluateId" column="evaluateId" />
+        <association property="productObj" column="productObj" select="com.chengxusheji.mapper.ProductMapper.getProduct" />
+        <association property="userObj" column="userObj" select="com.chengxusheji.mapper.UserInfoMapper.getUserInfo" />
+    </resultMap>
+
+    <!-- 按照查询条件查询所有商品评价记录 -->
+	<select id="queryEvaluateList" resultMap="evaluateMap" >
+		select t_evaluate.* from t_evaluate,t_product,t_userInfo ${where} and t_evaluate.productObj = t_product.productId and t_evaluate.userObj = t_userInfo.user_name
+	</select>
+
+    <!-- 按照查询条件的商品评价记录数 -->
+	<select id="queryEvaluateCount" resultType="int">
+		select count(*) from t_evaluate,t_product,t_userInfo ${where} and t_evaluate.productObj = t_product.productId and t_evaluate.userObj = t_userInfo.user_name
+	</select>
+
+	<!-- 根据主键查询某个商品评价记录 -->
+	<select id="getEvaluate" parameterType="int" resultMap="evaluateMap">
+		select * from t_evaluate where t_evaluate.evaluateId = #{evaluateId}
+	</select>
+
+	<!-- 更新商品评价记录 -->
+	<update id="updateEvaluate" parameterType="evaluate">
+		update t_evaluate set productObj=#{productObj.productId},userObj=#{userObj.user_name},content=#{content},evaluateTime=#{evaluateTime} where evaluateId = #{evaluateId}
+	</update>
+
+	<!-- 删除商品评价记录 -->
+	<delete id="deleteEvaluate" parameterType="int">
+		delete from t_evaluate where evaluateId=#{evaluateId}
+	</delete>
+
+</mapper>

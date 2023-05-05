@@ -1,0 +1,98 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/system/user",
+    "pages/system/about",
+    "pages/system/lianx",
+    "pages/orderState/orderState_add",
+    "pages/orderState/orderState_detail",
+    "pages/orderState/orderState_list",
+    "pages/orderState/orderState_modify",
+    "pages/evaluate/evaluate_add",
+    "pages/evaluate/evaluate_detail",
+    "pages/evaluate/evaluate_list",
+    "pages/evaluate/evaluate_modify",
+    "pages/userInfo/userInfo_add",
+    "pages/userInfo/userInfo_detail",
+    "pages/userInfo/userInfo_list",
+    "pages/userInfo/userInfo_modify",
+    "pages/productClass/productClass_add",
+    "pages/productClass/productClass_detail",
+    "pages/productClass/productClass_list",
+    "pages/productClass/productClass_modify",
+    "pages/shopCart/shopCart_add",
+    "pages/shopCart/shopCart_detail",
+    "pages/shopCart/shopCart_list",
+    "pages/shopCart/shopCart_modify",
+    "pages/orderInfo/orderInfo_add",
+    "pages/orderInfo/orderInfo_detail",
+    "pages/orderInfo/orderInfo_list",
+    "pages/orderInfo/orderInfo_modify",
+    "pages/leaveword/leaveword_add",
+    "pages/leaveword/leaveword_userAdd",
+    "pages/leaveword/leaveword_detail",
+    "pages/leaveword/leaveword_list",
+    "pages/leaveword/leaveword_modify",
+    "pages/notice/notice_add",
+    "pages/notice/notice_detail",
+    "pages/notice/notice_list",
+    "pages/notice/notice_modify",
+    "pages/payWay/payWay_add",
+    "pages/payWay/payWay_detail",
+    "pages/payWay/payWay_list",
+    "pages/payWay/payWay_modify",
+    "pages/orderItem/orderItem_add",
+    "pages/orderItem/orderItem_detail",
+    "pages/orderItem/orderItem_list",
+    "pages/orderItem/orderItem_modify",
+    "pages/product/product_add",
+    "pages/product/product_detail",
+    "pages/product/product_list",
+    "pages/product/product_modify",
+    "pages/mobile/mobile",
+    "pages/evaluate/evaluate_user_add",
+    "pages/evaluate/product_evaluate_list"
+  ],
+  "window": {
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText": "小程序客户端",
+    "navigationBarBackgroundColor": "#00AC2C",
+    "backgroundColor": "#EEEEEE",
+    "enablePullDownRefresh": true,
+    "backgroundTextStyle": "dark"
+  },
+  "tabBar": {
+    "color": "#b7b7b7",
+    "selectedColor": "#00AC2C",
+    "borderStyle": "white",
+    "backgroundColor": "#f5f5f5",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "images/icons/icon_home.png",
+        "selectedIconPath": "images/icons/icon_home_selected.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/product/product_list",
+        "iconPath": "images/icons/icon_cate.png",
+        "selectedIconPath": "images/icons/icon_cate_selected.png",
+        "text": "在线商城"
+      },
+      {
+        "pagePath": "pages/shopCart/shopCart_list",
+        "iconPath": "images/icons/icon_cart.png",
+        "selectedIconPath": "images/icons/icon_cart_selected.png",
+        "text": "购物车"
+      },
+      {
+        "pagePath": "pages/system/user",
+        "iconPath": "images/icons/icon_member.png",
+        "selectedIconPath": "images/icons/icon_member_selected.png",
+        "text": "个人中心"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json"
+}

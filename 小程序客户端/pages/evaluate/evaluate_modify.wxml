@@ -1,0 +1,60 @@
+<view class="container">
+  <loading hidden="{{loadingHide}}">
+    {{loadingText}}
+  </loading>
+  <view class="title">编辑商品评价</view>
+
+  <view class="evaluate_modify_view">
+    <form bindsubmit="formSubmit">
+       <view class="formItem">
+        <view class="label">评价编号：</view>
+        <view class="formControl">
+          <input type="text" name="evaluate.evaluateId" disabled="true" value="{{evaluateId}}" />
+        </view>
+      </view>
+      <view class="formItem">
+        <view class="label">商品名称：</view>
+        <view class="formControl">
+          <picker bindchange="bind_productObj_change" value="{{productObj_Index}}" range-key="productName" range="{{products}}">
+            <view style="display:flex;border:1px solid green;">
+              <input hidden="true" name="evaluate.productObj.productId" value="{{products[productObj_Index].productId}}" />
+              <input style="width:90%;border:0px;" value="{{products[productObj_Index].productName}}"></input>
+              <image class="arrow-r" src="/images/arrow-r-0.png"></image>
+            </view>
+          </picker> 
+        </view>
+      </view>
+
+      <view class="formItem">
+        <view class="label">用户名：</view>
+        <view class="formControl">
+          <picker bindchange="bind_userObj_change" value="{{userObj_Index}}" range-key="name" range="{{userInfos}}">
+            <view style="display:flex;border:1px solid green;">
+              <input hidden="true" name="evaluate.userObj.user_name" value="{{userInfos[userObj_Index].user_name}}" />
+              <input style="width:90%;border:0px;" value="{{userInfos[userObj_Index].name}}"></input>
+              <image class="arrow-r" src="/images/arrow-r-0.png"></image>
+            </view>
+          </picker> 
+        </view>
+      </view>
+
+      <view class="formItem" style="align-items:flex-start;">
+        <view class="label">评价内容：</view>
+        <view class="formControl">
+           <textarea placeholder="请输入评价内容" maxlength="800" name="evaluate.content" value="{{content}}" />
+        </view>
+      </view>
+
+      <view class="formItem">
+        <view class="label">评价时间：</view>
+        <view class="formControl">
+          <input type="text" name="evaluate.evaluateTime" placeholder="请输入评价时间" value="{{evaluateTime}}" />
+        </view>
+      </view>
+
+      <view>
+        <button class="vBtn_ok" formType="submit" disabled="{{disabled}}">提交修改</button>
+      </view>
+    </form>
+  </view>
+</view>

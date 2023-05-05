@@ -1,0 +1,90 @@
+<view class="container">
+  <loading hidden="{{loadingHide}}">
+    {{loadingText}}
+  </loading>
+
+  <view class="title">商品详情</view>
+  <view class="product_detail_view"> 
+      <view class="viewItem">
+        <view class="label">商品id：</view>
+        <view class="content">
+          <view>{{productId}}</view>
+        </view>
+      </view>
+
+       <view class="viewItem">
+        <view class="label">商品类别：</view>
+        <view class="content"> 
+          <view>{{productClassObj}}</view>
+        </view>
+      </view>
+
+       <view class="viewItem">
+        <view class="label">商品名称：</view>
+        <view class="content"> 
+          <view>{{productName}}</view>
+        </view>
+      </view>
+
+       <view class="viewItem">
+        <view class="label">商品主图：</view>
+        <view class="content"> 
+          <image mode="aspectFill" src="{{mainPhotoUrl}}"></image>
+        </view>
+      </view>
+
+       <view class="viewItem">
+        <view class="label">商品价格：</view>
+        <view class="content"> 
+          <view>{{price}}</view>
+        </view>
+      </view>
+
+       <view class="viewItem">
+        <view class="label">商量数量：</view>
+        <view class="content"> 
+          <view>{{productCount}}</view>
+        </view>
+      </view>
+
+       <view class="viewItem">
+        <view class="label">商品描述：</view>
+        <view class="content"> 
+          <view>{{productDesc}}</view>
+        </view>
+      </view>
+
+       <view class="viewItem">
+        <view class="label">是否推荐：</view>
+        <view class="content"> 
+          <view>{{recommendFlag}}</view>
+        </view>
+      </view>
+
+       <view class="viewItem">
+        <view class="label">人气值：</view>
+        <view class="content"> 
+          <view>{{hotNum}}</view>
+        </view>
+      </view>
+
+       <view class="viewItem">
+        <view class="label">上架时间：</view>
+        <view class="content"> 
+          <view>{{addTime}}</view>
+        </view>
+      </view>
+
+      <view>
+        <button class="vBtn_ok" formType="submit" catchtap="viewEvaluate">查看评价</button>
+      </view>
+      <view>
+        <button class="vBtn_ok" formType="submit" catchtap="addCart">加入购物车</button>
+      </view>
+
+      <view>
+        <navigator class="btnReturn" open-type="navigateBack" hover-class="navigator-hover">返回</navigator>
+      </view>
+
+  </view>
+</view>
